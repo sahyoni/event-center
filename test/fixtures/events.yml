@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  date: 2016-09-29 21:41:04
+  location: MyString
+  max_attends: 1
+  max_age: 1
+  min_age: 1
+
+two:
+  title: MyString
+  date: 2016-09-29 21:41:04
+  location: MyString
+  max_attends: 1
+  max_age: 1
+  min_age: 1

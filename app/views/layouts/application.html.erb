@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"> 
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Event Center</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/welcome/index/">Home</a></li>
+      
+      <li><a href="/profiles/">all profile</a></li>
+      <li><a href="/events/">events</a></li>
+
+    </ul>
+    
+    <ul class="nav navbar-nav navbar-right">
+    <% if current_user.nil? %>
+      <li><a href="/users/sign_up/"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
+ <% else %>
+      <li><a href="/events/new">create event</a></li>
+      <li><a href="/profiles/new/">new profile</a></li>
+      <li><a href="/profiles/<%= current_user.id %>">My Profile</a></li>
+      <li><a href="/myevents">My Events</a></li>
+        <a href="#"></a>
+      <% end %>
+      </li>
+      <li>
+      <% if current_user.nil? %>
+        <a href="/users/sign_in/"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+      <% else %>
+
+      
+          <a href="#"><%= current_user.email %></a>
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+       
+        <a href="#"><%= current_user.email %></a>
+      <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>
+<!DOCTYPE html>
+  </head>
+</html>
+<head>
+  <title>Events</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>

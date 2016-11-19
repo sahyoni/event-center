@@ -1,0 +1,79 @@
+CREATE TABLE User
+(
+  ID INT NOT NULL,
+  email INT NOT NULL,
+  name INT NOT NULL,
+  password INT NOT NULL,
+  PRIMARY KEY (ID)
+);
+
+rails g model user id:int email:string name:string 
+
+CREATE TABLE profile
+(
+  name INT NOT NULL,
+  my_rate INT NOT NULL,
+  country INT NOT NULL,
+  hoppys INT NOT NULL,
+  languages INT NOT NULL,
+  age INT NOT NULL,
+  gender INT NOT NULL,
+  avatar INT NOT NULL,
+  user_id INT NOT NULL,
+  PRIMARY KEY (name),
+  FOREIGN KEY (user_id) REFERENCES User(ID)
+);
+
+rails g schaffold profile name:string myrate:float country:string hoppys:string languages:string age:string gender:string avatar:string 
+rails generate migration add_user_id_to_profile user:references
+
+
+CREATE TABLE category
+(
+  type INT NOT NULL,
+  id INT NOT NULL,
+  PRIMARY KEY (id)
+);
+rails g model category type:string
+
+CREATE TABLE Event
+(
+  title INT NOT NULL,
+  date INT NOT NULL,
+  location INT NOT NULL,
+  max_attends INT NOT NULL,
+  max_age INT NOT NULL,
+  ID INT NOT NULL,
+  min_age INT NOT NULL,
+  category_id INT NOT NULL,
+  created_by INT NOT NULL,
+  PRIMARY KEY (ID),
+  FOREIGN KEY (category_id) REFERENCES category(id),
+  FOREIGN KEY (created_by) REFERENCES User(ID)
+);
+
+rails g scaffold event title:string date:datetime location:string max_attends:integer max_age:integer min_age:integer 
+
+rails generate migration add_user_id_to_event users:references
+rails generate migration add_category_id_to_event category:references
+
+
+
+
+CREATE TABLE attends
+(
+  event_id INT NOT NULL,
+  user_Id INT NOT NULL,
+  FOREIGN KEY (event_id) REFERENCES Event(ID),
+  FOREIGN KEY (user_Id) REFERENCES User(ID)
+);
+rails g model attend event:references user:references
+
+CREATE TABLE category_event
+(
+  cat_id INT NOT NULL,
+  event_id INT NOT NULL,
+  FOREIGN KEY (cat_id) REFERENCES category(id),
+  FOREIGN KEY (event_id) REFERENCES Event(ID)
+);
+rails g model category_event category:references event:references

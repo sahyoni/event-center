@@ -1,0 +1,44 @@
+<p> <%id="notice"%></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @profile.name %>
+</p>
+
+<p>
+  <strong>Myrate:</strong>
+  <%= @profile.myrate %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @profile.country %>
+</p>
+
+<p>
+  <strong>Hoppys:</strong>
+  <%= @profile.hoppys %>
+</p>
+
+<p>
+  <strong>Languages:</strong>
+  <%= @profile.languages %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @profile.age %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @profile.gender %>
+</p>
+
+<p>
+  <strong>Avatar:</strong>
+  <%= image_tag avatar_url(@profile.user) %>
+</p>
+
+<%= link_to 'Edit', edit_profile_path(@profile) , :class => "btn btn-md btn-primary btn-block" %> |
+<%= link_to 'Back', profiles_path , :class => "btn btn-md btn-primary btn-block" %>

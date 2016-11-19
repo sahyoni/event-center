@@ -1,0 +1,53 @@
+<%= form_for(@profile) do |f| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% @profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="container text-center col-lg-4 col-lg-offset-4">
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name , class: "form-control" %>
+  </div>
+  <!-- <div class="field">
+    <%= f.label :myrate %><br>
+    <%= f.select :myrate, [ 'one star', 'tow stars', 'three stars', 'four stars', 'five stars' ], :prompt => 'Select One' %>
+  </div> -->
+  <div class="field">
+    <%= f.label :country %><br>
+    <%= f.text_field :country , class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :hoppys %><br>
+    <%= f.text_field :hoppys , class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :languages %><br>
+    <%= f.text_field :languages , class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :age %><br>
+    <%= f.text_field :age , class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br>
+    <%= f.text_field :gender , class: "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :avatar %><br>
+    <%= f.text_field :avatar , class: "form-control" %>
+    
+  </div><br><br>
+  <div class="actions">
+    <%= f.submit "create profile", :class => "btn btn-lg btn-primary btn-block"  %>
+  </div>
+  <%= link_to 'Back', profiles_path %>
+
+  </div>
+<% end %>
